@@ -1,40 +1,59 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Blog Post App
 
-## Getting Started
+A **Blog Post App** built using modern web development tools and best practices. This app enables users to interact with public blog data through a user-friendly interface while demonstrating proficiency in building robust and efficient applications.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Pages](#pages)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **Next.js v13 (Page Router)**
+- **TypeScript**
+- **Axios**
+- **TanStack Query (v5)**
+- **Tailwind CSS (v3)**
+- **Ant Design (v5)**
+- **GoRest API**
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- **User Authentication**: A login page to enter credentials, including the GoRest API token.
+- **Post List**: Display a list of blog posts from GoRest.
+- **Post Detail**: A detailed page for each post, including user information and actions for creating, editing, or deleting posts.
+- **Create Post**: An interface to create a new blog post by providing a title and body.
+- **Edit Post**: Pre-filled input fields for editing an existing post’s title and body.
+- **Delete Post**: An option to delete a post from the list.
+- **Responsive Design**: The app is fully responsive and optimized for mobile and desktop views.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Pages
 
-## Learn More
+### `/login`
 
-To learn more about Next.js, take a look at the following resources:
+A login page where users can enter their **name** and **GoRest token**.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Required Fields:**
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Name
+- GoRest Token
 
-## Deploy on Vercel
+### `/posts`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+A page that shows a list of posts fetched from the GoRest API. Each post is clickable and links to its detailed view.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### `/posts/[id]?user_id=[userId]`
+
+A page displaying the details of a specific post, including:
+
+- The post's **title** and **body**
+- The **user information** (author)
+- Actions to:
+  - **Create a new post** (requires title and body)
+  - **Edit** an existing post (pre-filled with current post data)
+  - **Delete** a post
+
+### `/posts/update?post_id=[postId]`
+
+A page that allows editing an existing post. The title and body fields are pre-filled with the current post data, and users can modify them and submit the changes.
