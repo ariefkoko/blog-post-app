@@ -14,6 +14,14 @@ export default function LoginPage() {
 
   const [submittable, setSubmittable] = useState(false);
 
+  const token = Cookies.get("gorest_token");
+
+  useEffect(() => {
+    if (token) {
+      router.push("/posts");
+    }
+  }, []);
+
   useEffect(() => {
     form
       .validateFields({ validateOnly: true })
@@ -32,7 +40,7 @@ export default function LoginPage() {
         message.success("Token is valid! Welcome.");
         Cookies.set("name", name);
         Cookies.set("gorest_token", gorest_token);
-        router.push("/");
+        router.push("/posts");
       }
     } catch (error: any) {
       message.error(
